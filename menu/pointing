@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+
+# || BANDUNG BARAT || JAWA BARAT || INDONESIA ||
+# || KECAMATAN || SAGULING || DESA JATI ||
+# || DIAN PERMANA || GOMEZ || dP
+
+import requests
+import json
+import random
+import string
+import os
+
+def hapus():
+    os.system('clear')
+
+CF_API_TOKEN = 'LBZrKgFI9_UBRGo6x8ZUEmO1NzbfQXPTxb-70zw9'
+ZONE_ID = '1411ad8a55b429280a52f741550d2e46'
+DOMAIN_NAME = 'lunatictunnel.buzz'
+
+def generate_random_subdomain():
+    length = random.randint(5, 10)  # Panjang subdo antara 5 hingga 10 karakter
+    subdomain = ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
+    return subdomain
+
+def create_dns_record(ip_vps, subdomain):
+    subdomain_name = f"{subdomain}.{DOMAIN_NAME}"
+
+    url = f'https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/dns_records'
+
+    data = {
+        "type": "A",
+        "name": subdomain_name,
+        "content": ip_vps,
+        "ttl": 120,
+        "proxied": False  # false = mokad , True = Hirup
+    }
+
+    headers = {
+        'Authorization': f'Bearer {CF_API_TOKEN}',
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+
+    if response.status_code == 200:
+        print(f"domain {subdomain_name} di arahkan ke IP {ip_vps} sukses!!")
+    else:
+        print(f"Gagal membuat DNS record ipvps salah: {response.status_code}")
+        print(response.text)
+
+if __name__ == "__main__":
+    hapus()
+    ip_vps = input(" Masukkan IP VPS Lu: ")
+
+    subdomain = generate_random_subdomain()
+    # print
+    hapus()
+    print(f"\033[91;1m =============================== \033[0m")
+    print(f"\033[97;1m IP VPS :\033[33m {ip_vps}       \033[0m")
+    print(f"\033[96;1m DOMAIN :\033[92m {subdomain}.{DOMAIN_NAME} \033[0m")
+    print(f"\033[91;1m =============================== \033[0m")
+    
+    # panggil
+    create_dns_record(ip_vps, subdomain)

@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+
+# || BANDUNG BARAT || JAWA BARAT || INDONESIA ||
+# || KECAMATAN || SAGULING || DESA JATI ||
+# || DIAN PERMANA || GOMEZ ||
+
+import os
+import subprocess
+
+        
+def LUNATIX():
+    os.system('clear')
+
+def select_menu_display():
+    LUNATIX()
+    print(f"\033[38;5;197m{' ' * 15}======================================")        
+    print(f"\033[38;5;227m{' ' * 20} SSH/OPENVPN UDP MANAGERS ")
+    print(f"\033[38;5;197m{' ' * 15}======================================")    
+    print(f"\033[38;5;111m{' ' * 17}1. CREATE ACCOUNT ")
+    print(f"\033[38;5;111m{' ' * 17}2. CREATE TRIALL  ")
+    print(f"\033[38;5;111m{' ' * 17}3. DELETE ACCOUNT ")
+    print(f"\033[38;5;111m{' ' * 17}4. RENEW ACCOUNT  ")
+    print(f"\033[38;5;111m{' ' * 17}5. MONITOR ACCOUNT")
+    print(f"\033[38;5;111m{' ' * 17}6. DETAIL ACCOUNT ")    
+    print(f"\033[38;5;111m{' ' * 17}7. LIST MEMBER    ")
+    print(f"\033[38;5;111m{' ' * 17}x. EXIT")
+    print(f"\033[38;5;197m{' ' * 15}====================================== \033[0m")        
+    print()
+
+    ltt = input("   Just Input 1-7 or 'x': ")
+
+    if ltt == '1':
+        LUNATIX()
+        create()
+    elif ltt == '2':
+        LUNATIX()
+        triall()
+    elif ltt == '3':
+        LUNATIX()
+        delete()
+    elif ltt == '4':
+        LUNATIX()
+        renew()
+    elif ltt == '5':
+        LUNATIX()
+        monitor()
+    elif ltt == '6':
+        LUNATIX()
+        account()
+    elif ltt == '7':
+        LUNATIX()
+        member()   
+    else:
+        exit()
+
+                   # Eksekusi script shell menggunakan subprocess.run
+def create():
+    subprocess.run(["ssh_create"])
+
+def triall():
+    subprocess.run(["ssh_triall"])
+
+def delete():
+    subprocess.run(["ssh_delete"])
+
+def renew():
+    subprocess.run(["ssh_renew"])
+
+def monitor():
+    subprocess.run(["ssh_monitor"])
+
+def account():
+    subprocess.run(["ssh_detail"])
+
+def member():
+    subprocess.run(["ssh_member"])
+    
+# Main program
+if __name__ == "__main__":
+
+
+    # Tampilkan menu
+    select_menu_display()

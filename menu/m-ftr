@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+
+# || BANDUNG BARAT || JAWA BARAT || INDONESIA ||
+# || KECAMATAN || SAGULING || DESA JATI ||
+# || DIAN PERMANA || GOMEZ ||
+
+import os
+import subprocess
+
+        
+def LUNATIX():
+    os.system('clear')
+
+def select_menu_display():
+    LUNATIX()
+    print(f"\033[38;5;197m{' ' * 10}======================================")        
+    print(f"\033[38;5;227m{' ' * 16} FEATURES OTHERS MANAGER ")
+    print(f"\033[38;5;197m{' ' * 10}======================================")    
+    print(f"\033[38;5;111m{' ' * 12}1. RUNNING SERVICE  ")
+    print(f"\033[38;5;111m{' ' * 12}2. RESTART SERVICE  ")
+    print(f"\033[38;5;111m{' ' * 12}3. CHANGES DOMAIN   ")
+    print(f"\033[38;5;111m{' ' * 12}4. CHANGES BANNER   ")
+    print(f"\033[38;5;111m{' ' * 12}5. SHOW VPS PORTS   ")
+    print(f"\033[38;5;197m{' ' * 10}======================================")
+    print(f"\033[38;5;227m{' ' * 17} FIX MISSING & MONITORING")   
+    print(f"\033[38;5;197m{' ' * 10}======================================")
+    print(f"\033[38;5;111m{' ' * 12}6. FIX HAPROXY & NGINX   ")
+    print(f"\033[38;5;111m{' ' * 12}7. MONITOR VPS THAT RUNS ")
+    print(f"\033[38;5;111m{' ' * 12}x. EXIT")
+    print(f"\033[38;5;197m{' ' * 10}====================================== \033[0m")        
+    print()
+
+    ltt = input("   Just Input 1-9 or 'x':  ")
+
+    if ltt == '1':
+        LUNATIX()
+        running_service()
+        
+    elif ltt == '2':
+        LUNATIX()
+        restart_service()
+    elif ltt == '3':    
+        LUNATIX()
+        changes_domain()
+    elif ltt == '4':    
+        LUNATIX()
+        changes_banner()
+    elif ltt == '5':    
+        LUNATIX()        
+        Show_Ports()
+    elif ltt == '6':    
+        LUNATIX()        
+        fix_nginx_and_proxy()
+    elif ltt == '7':    
+        LUNATIX()
+        vps_monitor()
+    else:
+        exit()
+
+                   # Eksekusi script menggunakan subprocess.run
+
+# 1
+def running_service():
+    subprocess.run(["run"])
+
+# 2
+def restart_service():
+    subprocess.run(["reset"])
+
+# 3
+def changes_domain():
+    subprocess.run(["ADHost"])
+
+# 4
+def changes_banner():
+    subprocess.run(["m-bnr"])
+
+# 5
+def Show_Ports():
+    subprocess.run(["ports"])
+
+# 6
+def fix_nginx_and_proxy():
+    subprocess.run(["m-fix"])
+
+# 7    
+def vps_monitor():
+    subprocess.run(["gotop"])    
+    
+# Main program
+if __name__ == "__main__":
+
+
+    # Tampilkan menu
+    select_menu_display()
