@@ -17,7 +17,7 @@ from datetime import datetime
 ip_vps = subprocess.getoutput("curl -sS ipv4.icanhazip.com")
 
 # Ambil data validitas dan username dari URL
-raw_data = subprocess.getoutput("curl -sS https://raw.githubusercontent.com/murahtunnel/vps_access/main/ip")
+raw_data = subprocess.getoutput("curl -sS https://raw.githubusercontent.com/rohstore-lunatic/izin-akses/main/iplist")
 
 # Filter validitas dan username berdasarkan IP
 valid_date = subprocess.getoutput(f"echo '{raw_data}' | grep {ip_vps} | awk '{{print $3}}'")
@@ -38,7 +38,7 @@ def clear_screen():
         os.system('clear')  # Perintah untuk Linux/macOS
 def check_validity():
     my_ip = subprocess.getoutput("curl -sS ipv4.icanhazip.com")
-    izin = subprocess.getoutput("curl -sS https://raw.githubusercontent.com/murahtunnel/vps_access/main/ip| awk '{print $4}'")
+    izin = subprocess.getoutput("curl -sS https://raw.githubusercontent.com/rohstore-lunatic/izin-akses/main/iplist| awk '{print $4}'")
     
     if my_ip in izin:
         print("IZIN DITERIMA ANJING")
